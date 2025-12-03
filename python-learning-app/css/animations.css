@@ -1,0 +1,594 @@
+/* ========================================
+   RoboPython Academy - Animations
+   ======================================== */
+
+/* Keyframe Animations */
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(99, 102, 241, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.8);
+    }
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide In From Bottom */
+@keyframes slideInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade In Scale */
+@keyframes fadeInScale {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Confetti Animation */
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Typing Cursor */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Robot Movement */
+@keyframes robotMove {
+    0%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(20px) rotate(5deg);
+    }
+    50% {
+        transform: translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-20px) rotate(-5deg);
+    }
+}
+
+/* Wheel Spin */
+@keyframes wheelSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Progress Bar Stripe Animation */
+@keyframes progressStripe {
+    from {
+        background-position: 40px 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+/* Success Checkmark */
+@keyframes drawCheck {
+    0% {
+        stroke-dashoffset: 100;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Notification Slide */
+@keyframes notificationSlide {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    10% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    90% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   Animation Classes
+   ======================================== */
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease infinite;
+}
+
+.animate-float {
+    animation: float 3s ease infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 0.6s ease;
+}
+
+.animate-slide-right {
+    animation: slideInRight 0.5s ease;
+}
+
+.animate-slide-left {
+    animation: slideInLeft 0.5s ease;
+}
+
+.animate-slide-up {
+    animation: slideInUp 0.5s ease;
+}
+
+.animate-fade-scale {
+    animation: fadeInScale 0.3s ease;
+}
+
+/* ========================================
+   Interactive Hover Effects
+   ======================================== */
+
+/* Button Hover Effects */
+.btn-hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.btn-hover-glow:hover {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* Card Hover Effects */
+.card-hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover-glow:hover {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+/* Image/Icon Hover Effects */
+.icon-hover-rotate:hover {
+    transform: rotate(15deg);
+}
+
+.icon-hover-bounce:hover {
+    animation: bounceIn 0.5s ease;
+}
+
+/* ========================================
+   Loading States
+   ======================================== */
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--bg-tertiary);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.loading-dots span {
+    width: 10px;
+    height: 10px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    animation: pulse 1.4s ease infinite;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Progress Bar Animation */
+.progress-animated .progress-fill {
+    background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+    );
+    background-size: 40px 40px;
+    animation: progressStripe 1s linear infinite;
+}
+
+/* ========================================
+   Confetti Effect
+   ======================================== */
+
+.confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -20px;
+    animation: confetti-fall 3s ease-out forwards;
+}
+
+.confetti-piece:nth-child(1) { left: 10%; background: #ef4444; animation-delay: 0s; }
+.confetti-piece:nth-child(2) { left: 20%; background: #f59e0b; animation-delay: 0.1s; }
+.confetti-piece:nth-child(3) { left: 30%; background: #10b981; animation-delay: 0.2s; }
+.confetti-piece:nth-child(4) { left: 40%; background: #3b82f6; animation-delay: 0.3s; }
+.confetti-piece:nth-child(5) { left: 50%; background: #8b5cf6; animation-delay: 0.1s; }
+.confetti-piece:nth-child(6) { left: 60%; background: #ec4899; animation-delay: 0.2s; }
+.confetti-piece:nth-child(7) { left: 70%; background: #06b6d4; animation-delay: 0.3s; }
+.confetti-piece:nth-child(8) { left: 80%; background: #f97316; animation-delay: 0.15s; }
+.confetti-piece:nth-child(9) { left: 90%; background: #84cc16; animation-delay: 0.25s; }
+.confetti-piece:nth-child(10) { left: 15%; background: #a855f7; animation-delay: 0.35s; }
+
+/* ========================================
+   Typing Effect
+   ======================================== */
+
+.typing-text {
+    overflow: hidden;
+    border-right: 3px solid var(--accent-primary);
+    white-space: nowrap;
+    animation:
+        typing 3.5s steps(40, end),
+        blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   Robot Simulator Animations
+   ======================================== */
+
+.robot-sprite.moving-forward {
+    animation: moveForward 0.3s ease forwards;
+}
+
+.robot-sprite.moving-backward {
+    animation: moveBackward 0.3s ease forwards;
+}
+
+.robot-sprite.turning-left {
+    animation: turnLeft 0.3s ease forwards;
+}
+
+.robot-sprite.turning-right {
+    animation: turnRight 0.3s ease forwards;
+}
+
+@keyframes moveForward {
+    to {
+        transform: translate(-50%, 50%) translateY(-30px);
+    }
+}
+
+@keyframes moveBackward {
+    to {
+        transform: translate(-50%, 50%) translateY(30px);
+    }
+}
+
+@keyframes turnLeft {
+    to {
+        transform: translate(-50%, 50%) translateX(-30px) rotate(-15deg);
+    }
+}
+
+@keyframes turnRight {
+    to {
+        transform: translate(-50%, 50%) translateX(30px) rotate(15deg);
+    }
+}
+
+/* ========================================
+   Achievement Celebration
+   ======================================== */
+
+.achievement-celebration {
+    position: relative;
+}
+
+.achievement-celebration::before,
+.achievement-celebration::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-warning);
+    border-radius: 50%;
+    animation: celebration 1s ease infinite;
+}
+
+.achievement-celebration::before {
+    left: -30px;
+    top: 50%;
+}
+
+.achievement-celebration::after {
+    right: -30px;
+    top: 50%;
+    animation-delay: 0.5s;
+}
+
+@keyframes celebration {
+    0%, 100% {
+        transform: scale(0) translateY(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1) translateY(-20px);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   XP Counter Animation
+   ======================================== */
+
+.xp-counter {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.xp-counter.increment {
+    animation: xpIncrement 0.5s ease;
+}
+
+@keyframes xpIncrement {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+        color: var(--accent-success);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   Streak Fire Animation
+   ======================================== */
+
+.streak-fire {
+    position: relative;
+}
+
+.streak-fire.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 40px;
+    background: linear-gradient(to top, #f59e0b, #ef4444, transparent);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scale(1) rotate(-3deg);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateX(-50%) scale(1.1) rotate(3deg);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   Code Highlight Animation
+   ======================================== */
+
+.code-highlight {
+    position: relative;
+}
+
+.code-highlight::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--accent-primary);
+    opacity: 0.2;
+    border-radius: 4px;
+    animation: codeHighlight 2s ease infinite;
+}
+
+@keyframes codeHighlight {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+/* ========================================
+   Page Transition
+   ======================================== */
+
+.page-transition-enter {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+}
+
+.page-transition-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.page-transition-exit-active {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}

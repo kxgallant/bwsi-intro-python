@@ -1,0 +1,190 @@
+/* ========================================
+   RoboPython Academy - Theme Styles
+   ======================================== */
+
+/* Dark Theme */
+body.dark-theme {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-color: #475569;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Override specific elements for dark theme */
+body.dark-theme .code-editor textarea {
+    background: #1e293b;
+    color: #f1f5f9;
+}
+
+body.dark-theme .output-area {
+    background: #0f172a;
+}
+
+body.dark-theme .profile-input input {
+    background: #334155;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+body.dark-theme .profile-input input:focus {
+    border-color: var(--accent-primary);
+}
+
+body.dark-theme .playground-controls select {
+    background: #334155;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+body.dark-theme .simulator-canvas {
+    background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 100%);
+}
+
+/* Theme Toggle Icon Switch */
+body.dark-theme .theme-toggle i::before {
+    content: '\f185'; /* Sun icon */
+}
+
+/* Lesson Content Dark Theme */
+body.dark-theme .lesson-section {
+    background: #1e293b;
+    border-color: #475569;
+}
+
+body.dark-theme .code-block {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+body.dark-theme .code-block code {
+    color: #a5b4fc;
+}
+
+body.dark-theme .tip-box {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+body.dark-theme .warning-box {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+body.dark-theme .robot-example {
+    background: rgba(6, 182, 212, 0.15);
+    border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Quiz Dark Theme */
+body.dark-theme .quiz-option {
+    background: #334155;
+    border-color: #475569;
+}
+
+body.dark-theme .quiz-option:hover {
+    background: #475569;
+    border-color: var(--accent-primary);
+}
+
+/* Project Content Dark Theme */
+body.dark-theme .project-step {
+    background: #1e293b;
+}
+
+body.dark-theme .hardware-card {
+    background: #1e293b;
+}
+
+/* Scrollbar Dark Theme */
+body.dark-theme ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body.dark-theme ::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 5px;
+}
+
+body.dark-theme ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Custom Syntax Highlighting - Dark */
+body.dark-theme .syntax-keyword {
+    color: #c084fc;
+}
+
+body.dark-theme .syntax-string {
+    color: #86efac;
+}
+
+body.dark-theme .syntax-number {
+    color: #fbbf24;
+}
+
+body.dark-theme .syntax-comment {
+    color: #64748b;
+}
+
+body.dark-theme .syntax-function {
+    color: #60a5fa;
+}
+
+body.dark-theme .syntax-class {
+    color: #f472b6;
+}
+
+/* Light Theme Syntax Highlighting */
+.syntax-keyword {
+    color: #7c3aed;
+}
+
+.syntax-string {
+    color: #059669;
+}
+
+.syntax-number {
+    color: #d97706;
+}
+
+.syntax-comment {
+    color: #9ca3af;
+}
+
+.syntax-function {
+    color: #2563eb;
+}
+
+.syntax-class {
+    color: #db2777;
+}
+
+/* ========================================
+   Reduced Motion Preference
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* No Animations Class */
+body.no-animations *,
+body.no-animations *::before,
+body.no-animations *::after {
+    animation: none !important;
+    transition: none !important;
+}

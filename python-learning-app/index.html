@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboPython Academy - Learn Python for Robotics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="robot-animation">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>RoboPython Academy</h1>
+            <p>Loading your robotics adventure...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container hidden">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>RoboPython</span>
+                </div>
+            </div>
+            <div class="header-center">
+                <nav class="main-nav">
+                    <button class="nav-btn active" data-view="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="nav-btn" data-view="lessons">
+                        <i class="fas fa-book-open"></i>
+                        <span>Lessons</span>
+                    </button>
+                    <button class="nav-btn" data-view="playground">
+                        <i class="fas fa-code"></i>
+                        <span>Code Lab</span>
+                    </button>
+                    <button class="nav-btn" data-view="projects">
+                        <i class="fas fa-car"></i>
+                        <span>Projects</span>
+                    </button>
+                    <button class="nav-btn" data-view="achievements">
+                        <i class="fas fa-trophy"></i>
+                        <span>Achievements</span>
+                    </button>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="user-selector">
+                    <button class="user-btn" id="current-user">
+                        <div class="avatar" id="user-avatar">D</div>
+                        <span id="user-name">Dad</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <button class="user-option" data-user="dad">
+                            <div class="avatar avatar-dad">D</div>
+                            <span>Dad</span>
+                        </button>
+                        <button class="user-option" data-user="son1">
+                            <div class="avatar avatar-son1">S1</div>
+                            <span>Son (14)</span>
+                        </button>
+                        <button class="user-option" data-user="son2">
+                            <div class="avatar avatar-son2">S2</div>
+                            <span>Son (13)</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="settings-btn" id="settings-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="dashboard-view" class="view active">
+                <div class="dashboard-grid">
+                    <!-- Welcome Card -->
+                    <div class="card welcome-card">
+                        <div class="welcome-content">
+                            <h1>Welcome to RoboPython Academy! <span class="wave">&#128075;</span></h1>
+                            <p>Master Python programming to build autonomous robots. Your journey to creating a racing car and beach cleaning robot starts here!</p>
+                            <button class="btn btn-primary" id="start-learning-btn">
+                                <i class="fas fa-play"></i>
+                                Continue Learning
+                            </button>
+                        </div>
+                        <div class="welcome-illustration">
+                            <div class="robot-car">
+                                <i class="fas fa-car-side"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Overview -->
+                    <div class="card progress-card">
+                        <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+                        <div class="progress-ring-container">
+                            <svg class="progress-ring" viewBox="0 0 120 120">
+                                <circle class="progress-ring-bg" cx="60" cy="60" r="52"/>
+                                <circle class="progress-ring-fill" cx="60" cy="60" r="52" id="progress-ring"/>
+                            </svg>
+                            <div class="progress-text">
+                                <span id="progress-percent">0%</span>
+                                <small>Complete</small>
+                            </div>
+                        </div>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <span class="stat-value" id="lessons-completed">0</span>
+                                <span class="stat-label">Lessons</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="challenges-completed">0</span>
+                                <span class="stat-label">Challenges</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value" id="xp-earned">0</span>
+                                <span class="stat-label">XP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Module -->
+                    <div class="card current-module-card">
+                        <h3><i class="fas fa-bookmark"></i> Current Module</h3>
+                        <div class="module-preview" id="current-module-preview">
+                            <div class="module-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="module-info">
+                                <h4>Module 1: Python Basics</h4>
+                                <p>Variables, data types, and your first robot commands</p>
+                                <div class="module-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span>0% complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary" id="continue-module-btn">
+                            Continue <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Project Status -->
+                    <div class="card projects-status-card">
+                        <h3><i class="fas fa-rocket"></i> Your Projects</h3>
+                        <div class="project-cards">
+                            <div class="mini-project-card racing-car">
+                                <div class="project-icon">
+                                    <i class="fas fa-flag-checkered"></i>
+                                </div>
+                                <h4>Racing Car</h4>
+                                <div class="project-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="racing-progress" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <span class="project-status">Not Started</span>
+                            </div>
+                            <div class="mini-project-card beach-robot">
+                                <div class="project-icon">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <h4>Beach Cleaner</h4>
+                                <div class="project-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="beach-progress" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <span class="project-status">Not Started</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Daily Challenge -->
+                    <div class="card challenge-card">
+                        <div class="challenge-header">
+                            <h3><i class="fas fa-bolt"></i> Daily Challenge</h3>
+                            <span class="challenge-xp">+50 XP</span>
+                        </div>
+                        <div class="challenge-content" id="daily-challenge">
+                            <p class="challenge-question">Write a function that calculates how far your robot car travels given speed and time.</p>
+                            <code>distance = speed × time</code>
+                        </div>
+                        <button class="btn btn-accent" id="try-challenge-btn">
+                            <i class="fas fa-play"></i>
+                            Try Challenge
+                        </button>
+                    </div>
+
+                    <!-- Learning Streak -->
+                    <div class="card streak-card">
+                        <div class="streak-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="streak-info">
+                            <h3 id="streak-count">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                        <div class="streak-calendar" id="streak-calendar">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Family Leaderboard -->
+                    <div class="card leaderboard-card">
+                        <h3><i class="fas fa-users"></i> Family Leaderboard</h3>
+                        <div class="leaderboard-list" id="leaderboard">
+                            <div class="leaderboard-item" data-user="dad">
+                                <span class="rank">1</span>
+                                <div class="avatar avatar-dad">D</div>
+                                <span class="name">Dad</span>
+                                <span class="xp">0 XP</span>
+                            </div>
+                            <div class="leaderboard-item" data-user="son1">
+                                <span class="rank">2</span>
+                                <div class="avatar avatar-son1">S1</div>
+                                <span class="name">Son (14)</span>
+                                <span class="xp">0 XP</span>
+                            </div>
+                            <div class="leaderboard-item" data-user="son2">
+                                <span class="rank">3</span>
+                                <div class="avatar avatar-son2">S2</div>
+                                <span class="name">Son (13)</span>
+                                <span class="xp">0 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lessons View -->
+            <section id="lessons-view" class="view">
+                <div class="lessons-container">
+                    <div class="lessons-sidebar">
+                        <h2>Learning Path</h2>
+                        <div class="modules-list" id="modules-list">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+                    <div class="lessons-main">
+                        <div class="lesson-content" id="lesson-content">
+                            <!-- Lesson content loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Playground View -->
+            <section id="playground-view" class="view">
+                <div class="playground-container">
+                    <div class="playground-header">
+                        <h2><i class="fas fa-flask"></i> Code Laboratory</h2>
+                        <div class="playground-controls">
+                            <select id="code-template">
+                                <option value="blank">Blank Canvas</option>
+                                <option value="robot-move">Robot Movement</option>
+                                <option value="sensor-read">Sensor Reading</option>
+                                <option value="motor-control">Motor Control</option>
+                                <option value="obstacle-detect">Obstacle Detection</option>
+                            </select>
+                            <button class="btn btn-primary" id="run-code-btn">
+                                <i class="fas fa-play"></i> Run Code
+                            </button>
+                            <button class="btn btn-secondary" id="clear-code-btn">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="playground-main">
+                        <div class="code-editor-container">
+                            <div class="editor-header">
+                                <span><i class="fas fa-file-code"></i> main.py</span>
+                                <div class="editor-actions">
+                                    <button class="btn-icon" id="copy-code-btn" title="Copy code">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button class="btn-icon" id="download-code-btn" title="Download">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="code-editor">
+                                <div class="line-numbers" id="line-numbers"></div>
+                                <textarea id="code-input" spellcheck="false" placeholder="# Write your Python code here...
+# Control your robot!
+
+def move_robot(speed, direction):
+    print(f'Moving at {speed} m/s towards {direction}')
+
+move_robot(5, 'forward')"></textarea>
+                            </div>
+                        </div>
+                        <div class="output-container">
+                            <div class="output-header">
+                                <span><i class="fas fa-terminal"></i> Output</span>
+                                <button class="btn-icon" id="clear-output-btn" title="Clear output">
+                                    <i class="fas fa-eraser"></i>
+                                </button>
+                            </div>
+                            <div class="output-area" id="output-area">
+                                <span class="output-placeholder">Run your code to see output here...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="robot-simulator">
+                        <h3><i class="fas fa-robot"></i> Robot Simulator</h3>
+                        <div class="simulator-canvas" id="simulator-canvas">
+                            <div class="robot-sprite" id="robot-sprite">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="track-markers">
+                                <div class="marker start">START</div>
+                                <div class="marker finish">FINISH</div>
+                            </div>
+                        </div>
+                        <div class="simulator-controls">
+                            <button class="sim-btn" id="sim-forward"><i class="fas fa-arrow-up"></i></button>
+                            <div class="sim-row">
+                                <button class="sim-btn" id="sim-left"><i class="fas fa-arrow-left"></i></button>
+                                <button class="sim-btn" id="sim-stop"><i class="fas fa-stop"></i></button>
+                                <button class="sim-btn" id="sim-right"><i class="fas fa-arrow-right"></i></button>
+                            </div>
+                            <button class="sim-btn" id="sim-backward"><i class="fas fa-arrow-down"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects View -->
+            <section id="projects-view" class="view">
+                <div class="projects-container">
+                    <h2><i class="fas fa-rocket"></i> Build Your Robots</h2>
+                    <p class="projects-intro">Apply your Python skills to build real autonomous robots!</p>
+
+                    <div class="project-tabs">
+                        <button class="project-tab active" data-project="racing">
+                            <i class="fas fa-flag-checkered"></i>
+                            Autonomous Racing Car
+                        </button>
+                        <button class="project-tab" data-project="beach">
+                            <i class="fas fa-water"></i>
+                            Beach Cleaning Robot
+                        </button>
+                        <button class="project-tab" data-project="hardware">
+                            <i class="fas fa-microchip"></i>
+                            Hardware Guide
+                        </button>
+                    </div>
+
+                    <div class="project-content" id="project-content">
+                        <!-- Project content loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements View -->
+            <section id="achievements-view" class="view">
+                <div class="achievements-container">
+                    <h2><i class="fas fa-trophy"></i> Achievements</h2>
+                    <div class="achievements-stats">
+                        <div class="achievement-stat">
+                            <i class="fas fa-medal"></i>
+                            <span id="badges-earned">0</span>
+                            <p>Badges Earned</p>
+                        </div>
+                        <div class="achievement-stat">
+                            <i class="fas fa-star"></i>
+                            <span id="total-xp">0</span>
+                            <p>Total XP</p>
+                        </div>
+                        <div class="achievement-stat">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span id="skill-level">Beginner</span>
+                            <p>Skill Level</p>
+                        </div>
+                    </div>
+                    <div class="achievements-grid" id="achievements-grid">
+                        <!-- Achievements loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Settings Modal -->
+        <div class="modal" id="settings-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                    <button class="close-modal" id="close-settings">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="settings-section">
+                        <h3>User Profiles</h3>
+                        <div class="profile-settings">
+                            <div class="profile-input">
+                                <label>Dad's Name</label>
+                                <input type="text" id="dad-name" placeholder="Dad">
+                            </div>
+                            <div class="profile-input">
+                                <label>Son 1's Name (14 yrs)</label>
+                                <input type="text" id="son1-name" placeholder="Son (14)">
+                            </div>
+                            <div class="profile-input">
+                                <label>Son 2's Name (13 yrs)</label>
+                                <input type="text" id="son2-name" placeholder="Son (13)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Appearance</h3>
+                        <div class="setting-item">
+                            <span>Dark Mode</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="dark-mode-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Animations</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="animations-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Sound</h3>
+                        <div class="setting-item">
+                            <span>Sound Effects</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="sound-toggle" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Data</h3>
+                        <button class="btn btn-danger" id="reset-progress">
+                            <i class="fas fa-redo"></i> Reset All Progress
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="save-settings">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lesson Modal -->
+        <div class="modal" id="lesson-modal">
+            <div class="modal-content modal-large">
+                <div class="modal-header">
+                    <h2 id="lesson-modal-title">Lesson Title</h2>
+                    <button class="close-modal" id="close-lesson">&times;</button>
+                </div>
+                <div class="modal-body" id="lesson-modal-body">
+                    <!-- Lesson content -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="prev-lesson-btn">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn btn-primary" id="next-lesson-btn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievement Popup -->
+        <div class="achievement-popup" id="achievement-popup">
+            <div class="achievement-popup-content">
+                <div class="confetti"></div>
+                <i class="fas fa-trophy"></i>
+                <h3>Achievement Unlocked!</h3>
+                <p id="achievement-name">First Steps</p>
+                <span id="achievement-xp">+100 XP</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>RoboPython Academy - Learning Python for Robotics</p>
+            <div class="footer-links">
+                <a href="#" id="help-link"><i class="fas fa-question-circle"></i> Help</a>
+                <a href="#" id="about-link"><i class="fas fa-info-circle"></i> About</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/lessons-data.js"></script>
+    <script src="js/achievements.js"></script>
+    <script src="js/python-interpreter.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
